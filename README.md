@@ -6,7 +6,7 @@
 
 ## A과정 데이터 다운로드 (최혜미 교수님 강좌, )
 [https://drive.google.com/drive/folders/1ggq9oP9Qc0Tye70EOFdpluZzqFVPIZAB?usp=sharing]
-데이터 파일 링크입니다! 
+
 
 ## B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, )
 [https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
