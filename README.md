@@ -14,10 +14,17 @@
 
 2. 교재 PDF(월요일 수업 종료 후에 배포하겠습니다.)
 
-3. 심심할 때 보는 코드
+3. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]    
 
-  * 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]
-  * 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
+4. 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
+   * 데이터 설명
+    * 선거 민주주의 (Electoral): 자유롭고 공정한 선거가 보장되는 정도를 측정합니다.
+    * 자유 민주주의 (Liberal): 개인의 자유와 권리가 법치에 의해 보호받는 정도를 평가합니다.
+    * 참여 민주주의 (Participatory): 시민들이 정치 과정에 적극적으로 참여하는 수준을 측정합니다.
+    * 심의 민주주의 (Deliberative): 정치적 결정이 공적인 추론과 논증을 통해 이루어지는 정도를 평가합니다.
+    * 평등 민주주의 (Egalitarian): 모든 사회 집단에 걸쳐 정치적 권력과 자원이 동등하게 분배되는 정도를 측정합니다.
+
+
 
 
 ## B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, )
