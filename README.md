@@ -16,7 +16,7 @@
 
 3. 심심할 때 보는 코드
     
-  a. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]
+  a. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]   
   b. 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
 
 
