@@ -9,15 +9,13 @@
 * 수강 중 도움이 필요하시면 손을 들어주세요!
 * 파일에 오류가 생겼다면 아래 링크에서 다시 다운 받아주시면 됩니다.
 
-## A과정 데이터 다운로드 (최혜미 교수님 강좌, )
-1. 데이터   
+## A과정 데이터 다운로드 (최혜미 교수님 강좌, 월요일)
+1. 데이터 & 교재 PDF & 참고자료
 [https://drive.google.com/drive/folders/1ggq9oP9Qc0Tye70EOFdpluZzqFVPIZAB?usp=sharing]
 
-2. 교재 PDF(월요일 수업 종료 후에 배포하겠습니다.)
+2. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]    
 
-3. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]    
-
-4. 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
+3. 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
 * 데이터 설명
     * 선거 민주주의 (Electoral): 자유롭고 공정한 선거가 보장되는 정도를 측정합니다.
     * 자유 민주주의 (Liberal): 개인의 자유와 권리가 법치에 의해 보호받는 정도를 평가합니다.
@@ -32,10 +30,12 @@
 
 
 
-## B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, )
+## B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, 화요일&수요일)
+
+1. 데이터    
 [https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
 
-
+2. 교재 PDF(수요일 수업 종료 후에 배포하겠습니다.)
 
 
 
