@@ -1,7 +1,7 @@
 # statistics_R_class07
 
 
-<img width="400" height="400" alt="Untitled 1" src="https://github.com/user-attachments/assets/de94d9ad-d19f-407c-815c-44183b09e658" />      
+<img width="300" height="300" alt="Untitled 1" src="https://github.com/user-attachments/assets/de94d9ad-d19f-407c-815c-44183b09e658" />      
 
 [https://github.com/hanwo-ol/statistics_R_class07/]
 
