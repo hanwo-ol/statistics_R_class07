@@ -56,3 +56,15 @@ body_data <- read.csv(file.path(path, "body.csv"))
 # 읽어온 데이터의 처음 몇 줄을 확인합니다.
 head(body_data)
 ```
+
+
+## 한글 csv 깨짐 현상
+
+-> fileEncoding 옵션 추가하기
+``` r
+df <- read.csv(file_path, fileEncoding = "CP949")
+ # 또는
+
+df <- read.csv(file_path, fileEncoding = "UTF-8")
+
+```
