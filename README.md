@@ -68,3 +68,99 @@ df <- read.csv(file_path, fileEncoding = "CP949")
 df <- read.csv(file_path, fileEncoding = "UTF-8")
 
 ```
+
+## 결측치가 있는 경우 어떻게 해야할까?
+* 데이터 분석 목적에 따라 다름
+* 데이터 손실이 크지 않다면 na.omit으로 행을 삭제
+* 중요한 데이터면 평균, 중앙값, 최빈값 등으로 대체
+* 상황에 따라 0, 빈 문자열(""), "Unknown" 등으로 대체 가능
+
+R에서 **CSV를 읽거나 데이터 분석**을 할 때 결측치(NA, 빈 값)가 있으면 처리가 매우 중요합니다.
+결측치를 어떻게 다루느냐에 따라 결과가 크게 달라질 수 있습니다.
+
+---
+
+# 1. 결측치(NA, 빈값) 확인하기
+
+먼저 데이터를 불러오고 결측치가 어디 있는지 확인합니다.
+
+```r
+df <- read.csv("파일이름.csv", fileEncoding = "CP949") # 또는 "UTF-8"
+# 결측치 확인
+is.na(df)
+summary(df)
+colSums(is.na(df))  # 각 열별 결측치 개수
+```
+
+---
+
+### 2. 결측치 처리 방법
+
+### 2-1. 결측치가 포함된 행/열 삭제하기
+
+### (1) 결측치가 있는 행 삭제
+
+```r
+df_no_na <- na.omit(df)
+# 또는
+df_no_na <- df[complete.cases(df), ]
+```
+
+### (2) 결측치가 있는 열 삭제
+
+```r
+df_no_na_col <- df[, colSums(is.na(df)) == 0]
+```
+
+---
+
+### 2-2. 결측치를 특정 값으로 대체하기
+
+### (1) 0 또는 평균, 중앙값 등으로 대체
+
+```r
+# age 열의 결측치를 0으로 대체
+df$age[is.na(df$age)] <- 0
+
+# age 열의 결측치를 평균으로 대체 (결측치가 아닌 값의 평균)
+df$age[is.na(df$age)] <- mean(df$age, na.rm = TRUE)
+```
+
+### (2) 전체 데이터프레임에 적용
+
+```r
+# 모든 결측치를 0으로 대체
+df[is.na(df)] <- 0
+```
+
+---
+
+### 2-3. 분석 시 결측치 자동 무시
+
+* `mean()`, `sum()`, `sd()` 등 함수에서 `na.rm=TRUE` 옵션 사용
+
+```r
+mean(df$age, na.rm = TRUE)
+sum(df$score, na.rm = TRUE)
+```
+
+---
+
+### 3. 결측치 대체 함수 (`tidyverse` 패키지 활용)
+
+`dplyr`과 `tidyr` 패키지에서 결측치 처리가 더 쉬워집니다.
+
+```r
+library(dplyr)
+df <- df %>% mutate(age = ifelse(is.na(age), 0, age))
+```
+
+또는
+
+```r
+library(tidyr)
+df <- df %>% replace_na(list(age = 0, score = 100))
+```
+
+---
+
