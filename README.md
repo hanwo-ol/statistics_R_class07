@@ -1,8 +1,8 @@
 # statistics_R_class07
 
 
-<img width="1000" height="1000" alt="Untitled 1" src="https://github.com/user-attachments/assets/de94d9ad-d19f-407c-815c-44183b09e658" />
-
+<img width="1000" height="1000" alt="Untitled 1" src="https://github.com/user-attachments/assets/de94d9ad-d19f-407c-815c-44183b09e658" />   
+[https://github.com/hanwo-ol/statistics_R_class07/]
 
 안녕하세요! R을 이용한 통계자료분석 강의를 위한 페이지입니다.
 * 수강 중 도움이 필요하시면 손을 들어주세요!
