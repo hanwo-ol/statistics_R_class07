@@ -1,3 +1,5 @@
+# 조교가 예습하면서 미리 해봤을 뿐, 코드가 완벽하게 같지 않을 수 있습니다.
+
 # install.packages 함수는 CRAN(Comprehensive R Archive Network)에서 패키지를 다운로드하고 설치합니다.
 # c() 함수는 여러 항목을 묶어 하나의 벡터로 만들어 줍니다.
 # 'ggplot2', 'gridExtra' 등은 데이터 시각화 및 조작에 널리 사용되는 패키지들입니다.
@@ -14,7 +16,7 @@ data_path <- "D:/2025여름 특강/R/B_data/"
 
 #### **1.1.1 기본 그래프**
 
-R에 내장된 기본 함수들을 사용하여 다양한 그래프를 생성합니다.
+# R에 내장된 기본 함수들을 사용하여 다양한 그래프를 생성합니다.
 
 # R에 내장된 '버지니아 주 사망률' 데이터셋을 불러옵니다.
 data(VADeaths)
@@ -261,10 +263,10 @@ vcd::mosaic(~ Dept + Gender + Admit, data = UCBAdmissions,
 
 ### **1.2 ggplot2의 활용**
 
-`ggplot2`는 '그래픽의 문법(Grammar of Graphics)'에 기반한 강력하고 유연한 시각화 패키지입니다. 데이터(data), 미적 매핑(aes), 기하 객체(geom) 등의 요소를 조립하여 그래프를 만듭니다.
+#`ggplot2`는 '그래픽의 문법(Grammar of Graphics)'에 기반한 강력하고 유연한 시각화 패키지입니다. 데이터(data), 미적 매핑(aes), 기하 객체(geom) 등의 요소를 조립하여 그래프를 만듭니다.
 
 #### **1.2.1 ggplot2 소개**
-`ggplot()` 함수로 기본 캔버스를 만들고, `+` 기호로 다양한 레이어(geom, theme 등)를 추가합니다.
+#`ggplot()` 함수로 기본 캔버스를 만들고, `+` 기호로 다양한 레이어(geom, theme 등)를 추가합니다.
 
 #### **1.2.2 ggplot2 기본 그래프**
 
