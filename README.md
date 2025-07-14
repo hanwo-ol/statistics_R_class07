@@ -17,7 +17,7 @@
 3. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]    
 
 4. 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
-   * 데이터 설명
+* 데이터 설명
     * 선거 민주주의 (Electoral): 자유롭고 공정한 선거가 보장되는 정도를 측정합니다.
     * 자유 민주주의 (Liberal): 개인의 자유와 권리가 법치에 의해 보호받는 정도를 평가합니다.
     * 참여 민주주의 (Participatory): 시민들이 정치 과정에 적극적으로 참여하는 수준을 측정합니다.
