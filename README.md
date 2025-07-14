@@ -164,3 +164,64 @@ df <- df %>% replace_na(list(age = 0, score = 100))
 
 ---
 
+
+## 티블 또는 데이터 프레임에 변수(column) 추가하기
+`dplyr` 패키지의 `mutate()` 함수를 사용하면 간단하게 해결할 수 있습니다.
+
+### `dplyr::mutate()` 함수 사용하기
+
+`mutate()` 함수는 기존 데이터 프레임에 새로운 변수(열)를 추가하거나 기존 변수를 수정할 때 사용합니다.
+
+```r
+# 기존 티블과 새로운 벡터를 생성
+tb_king <- dplyr::tibble(
+  id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+  kname = c("ads", "adgad", "adeeg", "adsgah", "rty ", "wyn ", "sfgsd ", "sfg ", "sg ", "sggggg "),
+  ltime = c(73, 62, 55, 53, 38, 16, 51, 19, 37, 30)
+)
+
+nchildren <- c(13, 23, 29, 22, 3, 0, 5, 3, 28, 5)
+
+# mutate() 함수를 사용하여 nchildren 열을 추가합니다.
+tb_king <- tb_king %>%
+  dplyr::mutate(nchildren = nchildren)
+
+# 결과 확인
+tb_king
+```
+
+-----
+
+### 실행 결과
+
+위 코드를 실행하면 `nchildren` 열이 성공적으로 추가된 것을 확인할 수 있습니다.
+
+```
+# A tibble: 10 × 4
+      id kname    ltime nchildren
+   <dbl> <chr>    <dbl>     <dbl>
+ 1     1 "ads"       73        13
+ 2     2 "adgad"     62        23
+ 3     3 "adeeg"     55        29
+ 4     4 "adsgah"    53        22
+ 5     5 "rty "      38         3
+ 6     6 "wyn "      16         0
+ 7     7 "sfgsd "    51         5
+ 8     8 "sfg "      19         3
+ 9     9 "sg "       37        28
+10    10 "sggggg "   30         5
+```
+
+-----
+
+### 다른 방법 (R 기본 문법)
+
+`dplyr` 패키지 없이 R의 기본 문법인 `$` 연산자를 사용해서 열을 추가할 수도 있습니다.
+
+```r
+# '$' 연산자를 사용하여 nchildren 열 추가
+tb_king$nchildren <- nchildren
+
+# 결과 확인
+tb_king
+```
