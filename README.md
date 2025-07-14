@@ -10,6 +10,9 @@
 * 파일에 오류가 생겼다면 아래 링크에서 다시 다운 받아주시면 됩니다.
 
 ## A과정 데이터 다운로드 (최혜미 교수님 강좌, 월요일)
+<details>
+<summary>링크 및 예제 보기</summary>
+
 1. 데이터 & 교재 PDF & 참고자료
 [https://drive.google.com/drive/folders/1ggq9oP9Qc0Tye70EOFdpluZzqFVPIZAB?usp=sharing]
 
@@ -28,14 +31,24 @@
     * 변수 수: 4,607개
     * 최신 v15 데이터셋은 1789년부터 2024년까지 전 세계 202개 국가를 다루며, **500개 이상의 지표(indicators), 81개의 지수(indices), 5개의 상위 지수(high-level indices)** 를 포함합니다.
 
+</details>
+
+
 
 
 ## B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, 화요일&수요일)
+<details>
+<summary>링크 및 예제 보기</summary>
 
 1. 데이터    
 [https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
 
 2. 교재 PDF(수요일 수업 종료 후에 배포하겠습니다.)
+
+
+</details>
+
+
 
 
 
@@ -47,6 +60,10 @@
 ---
 
 # A과정 질문 내용
+
+<details>
+<summary> 질문 및 답변 보기</summary>
+
 ## 파일 디렉토리 쉽게 설정하기
 ``` r
 # 파일 경로를 path 변수에 저장합니다.
@@ -228,3 +245,6 @@ tb_king$nchildren <- nchildren
 # 결과 확인
 tb_king
 ```
+
+</details>
+
