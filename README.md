@@ -5,8 +5,20 @@
 * 파일에 오류가 생겼다면 아래 링크에서 다시 다운 받아주시면 됩니다.
 
 ## A과정 데이터 다운로드 (최혜미 교수님 강좌, )
+1. 데이터   
 [https://drive.google.com/drive/folders/1ggq9oP9Qc0Tye70EOFdpluZzqFVPIZAB?usp=sharing]
+
+2. 교재 PDF(월요일 수업 종료 후에 배포하겠습니다.)
+
+
 
 
 ## B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, )
 [https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
+
+
+
+
+
+## 실습 중 궁금하신 사항 손들어주시면 달려가겠습니다~
+- 실습조교: 통계학과 대학원생 김한울
