@@ -11,6 +11,25 @@
 
 ---
 
+
+# B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, 화요일&수요일)
+<details>
+<summary>링크 및 예제 보기</summary>
+
+1. 데이터    
+[https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
+
+2. 교재 PDF(수요일 수업 종료 후에 배포하겠습니다.)
+
+3. 수업 코드 놓쳤어요(화요일)   
+   * [https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Tues.r]
+
+</details>
+
+
+
+---
+
 # A과정 데이터 및 참고자료 다운로드 (최혜미 교수님 강좌, 월요일)
 <details>
 <summary>링크 및 예제 보기</summary>
@@ -37,19 +56,6 @@
 
 
 ---
-
-# B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, 화요일&수요일)
-<details>
-<summary>링크 및 예제 보기</summary>
-
-1. 데이터    
-[https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
-
-2. 교재 PDF(수요일 수업 종료 후에 배포하겠습니다.)
-
-
-</details>
-
 ---
 
 # C과정 참고자료 다운로드 (이영미 교수님 강좌, 목요일&금요일)
