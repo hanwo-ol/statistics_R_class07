@@ -19,6 +19,8 @@
 1. 수업에 사용된 데이터 csv 파일    
 [https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
 
+[https://drive.google.com/file/d/1lzegHCp9Mykjqt9NX_vmxYzrlIwXc5Mn/view?usp=sharing]
+
 2. 교재 PDF(수요일 수업 종료 후에 배포하겠습니다.)
 
 3. 수업 코드 놓쳤어요(화요일)   
