@@ -16,7 +16,7 @@
 <details>
 <summary>링크 및 예제 보기</summary>
 
-1. 데이터    
+1. 수업에 사용된 데이터 csv 파일    
 [https://drive.google.com/drive/folders/1T0pNwryVx8zLN04_qjniQ_Ha0MoY1iEe?usp=sharing]    
 
 2. 교재 PDF(수요일 수업 종료 후에 배포하겠습니다.)
@@ -24,8 +24,10 @@
 3. 수업 코드 놓쳤어요(화요일)   
    * [https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Tues.r]
 
+
 </details>
 
+## 수업에 사용된 내장 데이터 설명
 
 
 ---
