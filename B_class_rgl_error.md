@@ -8,7 +8,7 @@ rgl같은 경우는.. Rtools라는 윤활유가 필요합니다.
 
 사용하고 계신 R 버전에 맞는 **Rtools40**을 설치해야 합니다.
 
-  * [**Rtools40 다운로드 페이지**](https://cran.r-project.org/bin/windows/Rtools/rtools40.html)에 접속하여 `rtools40-x86_64.exe` 설치 파일을 다운로드하고 실행하세요.
+  * [**Rtools40 다운로드 페이지**](https://cran.r-project.org/bin/windows/Rtools)에 접속하여 `rtools40-x86_64.exe` 설치 파일을 다운로드하고 실행하세요.
   * 설치 과정에서 **"Add rtools to system PATH"** 또는 **"시스템 PATH에 Rtools 추가"** 옵션이 있다면 반드시 체크해 주세요.
 
 **2. R에서 Rtools 경로 설정하기**
