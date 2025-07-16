@@ -10,7 +10,32 @@
 * 파일에 오류가 생겼다면 아래 링크에서 다시 다운 받아주시면 됩니다.
 
 ---
+<details>
+<summary>각 페이지 설명</summary>
 
+| 게시물 이름                     | 주소                                                                                   | 내용                                                              |
+|-------------------------------|----------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| A_class_dimension.md          | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_dimension.md)          | 수강생 질문: 차원이 왜 중요하냐?                                     |
+| A_class_nhanesA_practice.r    | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r)    | 의료데이터 실습                                                       |
+| A_class_vdeminstitute.r       | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r)       | 정치학데이터 실습                                                     |
+| B_Class_chisq_warning.md      | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_Class_chisq_warning.md)      | 수강생 질문: 카이제곱 검정 경고가 뜨는데요?                             |
+| B_class_1_1_1.md              | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_1_1_1.md)              | B 클래스 화요일 오전 수업 정리                                         |
+| B_class_GGally.md             | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_GGally.md)             | 수강생 질문: 상관행렬도 예시                                            |
+| B_class_Tues.r               | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Tues.r)               | B 클래스 화요일 수업 정리                                              |
+| B_class_Wed.r                | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Wed.r)                | B 클래스 수요일 수업 정리                                              |
+| B_class_election.md           | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_election.md)           | 수강생 질문: 선거 데이터 이용한 박스플랏                                  |
+| B_class_election.r            | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_election.r)            | 수강생 질문: 선거 데이터 이용한 데이터 핸들링                             |
+| B_class_ggplot_text_issue.md  | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_ggplot_text_issue.md)  | 수강생 질문: jitter option 효율적 사용방안                             |
+| B_class_pie_chart.md          | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_pie_chart.md)          | 수강생 질문: 파이차트 잘 사용하는 방법                                   |
+| B_class_prof_code.r           | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_prof_code.r)           | B 클래스 화요일 수업 후 교수님 사용한 코드 업로드                          |
+| B_class_rgl_error.md          | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_rgl_error.md)          | 수강생 질문: rgl 패키지 오류 처리법                                     |
+| B_class_tests_explanation.r   | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_tests_explanation.r)   | B 클래스 수요일 수업 중 사용되는 테스트 해석 방법 개인 공부때 작성한 내용        |
+| README.md                     | [링크](https://github.com/hanwo-ol/statistics_R_class07/blob/main/README.md)                     | 현재 페이지                                                          |
+
+
+</details>
+
+---
 
 # B과정 데이터 및 참고자료 다운로드 (황승용 교수님 강좌, 화요일&수요일)
 <details>
