@@ -26,6 +26,8 @@
 3. 수업 코드 놓쳤어요(화요일)   
    * [https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Tues.r]
 
+4. 수업 코드 놓쳤어요(수요일)
+   * [https://drive.google.com/file/d/1jEAXzb8Rf6sO2OSHP3eTsBsX9gD5984r/view?usp=drive_link]
 
 </details>
 
