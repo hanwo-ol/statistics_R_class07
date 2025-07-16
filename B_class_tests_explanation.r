@@ -134,6 +134,47 @@ n_buy_age
 # 비율의 동일성 검정 수행 
 prop.test(n_buy_age, n_age)
 
+
+# 연령대의 구매 비율이 같을까?
+stats::prop.test(x = buy_summary2$n_buy,
+                 n = buy_summary2$n_time)
+
+# [결과 해석]
+#
+# 4-sample test for equality of proportions without continuity correction
+# -> 4개 표본(샘플)에 대한 비율 동일성 검정을 의미합니다. 
+#    여기서는 4개의 연령대(20대, 30대, 40대, 50대)의 구매 비율이 같은지를 검정합니다.
+#    'without continuity correction'은 연속성 보정 없이 검정을 수행했다는 기술적인 정보입니다.
+
+# data:  buy_summary2$n_buy out of buy_summary2$n_time
+# -> 검정에 사용된 데이터가 'buy_summary2' 데이터프레임의 'n_time'(전체 인원) 중 'n_buy'(구매 인원)임을 명시합니다.
+
+# X-squared = 24.092, df = 3, p-value = 2.39e-05
+# -> X-squared: 카이제곱 검정 통계량으로, 관측된 값과 기대값의 차이를 나타냅니다. 클수록 차이가 크다는 의미입니다.
+# -> df: 자유도(degrees of freedom)로, (그룹의 수 - 1) 입니다. 여기서는 (4개 연령대 - 1) = 3 입니다.
+# -> p-value: 검정 결과의 핵심으로, "만약 모든 연령대의 실제 구매 비율이 같다면(귀무가설이 맞다면), 
+#    지금과 같은 큰 차이가 우연히 나타날 확률"을 의미합니다.
+#    2.39e-05는 0.0000239로, 일반적인 유의수준 0.05보다 매우 작습니다.
+
+# alternative hypothesis: two.sided
+# -> 대립가설은 'two.sided'(양측검정)로, "적어도 하나의 연령대 구매 비율은 다르다"는 것을 의미합니다.
+
+# sample estimates:
+#    prop 1    prop 2    prop 3    prop 4 
+# 0.3842365 0.2105263 0.1878788 0.2727273 
+# -> 각 그룹(표본)별 실제 구매 비율을 보여줍니다.
+#    - prop 1 (20대): 약 38.4%
+#    - prop 2 (30대): 약 21.1%
+#    - prop 3 (40대): 약 18.8%
+#    - prop 4 (50대): 약 27.3%
+
+# [최종 결론]
+# p-value(0.0000239)가 유의수준(0.05)보다 매우 작으므로, 귀무가설("연령대별 구매 비율이 동일하다")을 기각합니다.
+# 따라서 "연령대별 구매 비율에는 통계적으로 유의미한 차이가 있다"고 결론 내릴 수 있습니다.
+
+
+
+
 # 연령별 구매 비율 점 그래프 생성
 ggplot(data.frame(age = as.numeric(names(n_buy_age)), 
                   prop = n_buy_age / n_age), 
