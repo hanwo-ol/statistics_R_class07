@@ -24,11 +24,12 @@
 2. 교재 PDF(수요일 수업 종료 후에 배포하겠습니다.)
 
 3. 수업 코드 놓쳤어요(화요일)   
-   * [https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Tues.r]
+   * 설명 같이 작성된 버전: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Tues.r]
 
 4. 수업 코드 놓쳤어요(수요일)
-   * [https://drive.google.com/file/d/1jEAXzb8Rf6sO2OSHP3eTsBsX9gD5984r/view?usp=drive_link]
-
+   * 텍스트 파일: [https://drive.google.com/file/d/1jEAXzb8Rf6sO2OSHP3eTsBsX9gD5984r/view?usp=drive_link]
+   * 설명 같이 작성된 버전: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/B_class_Wed.r]
+  
 </details>
 
 ## 수업에 사용된 내장 데이터 설명
