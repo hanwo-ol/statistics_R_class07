@@ -73,8 +73,8 @@ stats::shapiro.test(sleep_wide$difference)
 #> Shapiro-Wilk normality test
 #> data:  sleep_wide$difference
 #> W = 0.82987, p-value = 0.03334
-# [결과 해석]: p-value(0.03334)가 유의수준 0.05보다 작으므로, 정규분포를 따른다는 귀무가설을 기각합니다.
-# 즉, 정규성 가정을 엄격하게 만족한다! 라고 할 수는 없습니다.... 
+# [결과 해석]: 
+# p-value(0.03334)가 유의수준 0.05보다 작기 때문에 귀무가설을 기각하며, 차이값이 정규분포를 따른다고 보기 어렵습니다.  
 ```
 
 ### 4. 대응표본 T-검정 (Paired T-test)
