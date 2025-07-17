@@ -1,7 +1,8 @@
 ~~예시는 국력이다.~~
 
 ## 스크리 플롯 그리기(최적의 주성분 개수는?)
-
+<details> <summary> 펼치기 </summary> 
+  
 ``` R
 # 1. 데이터 준비
 # R 내장 mtcars 데이터셋을 로드하고 구조를 확인합니다.
@@ -156,9 +157,120 @@ ggplot(variance_data, aes(x = Component, y = Cumulative_Proportion, group = 1)) 
 
 <img width="1308" height="1164" alt="image" src="https://github.com/user-attachments/assets/ea47bac1-644b-45fe-9432-d81d672f8400" />
 
+</details>
+
 ---
 
 
+## 주성분분석(PCA) 그림 그려보기
+
+<details> <summary> 펼치기 </summary> 
+
+
+``` R
+# 1. 패키지 설치 및 로드
+# factoextra 패키지가 설치되어 있지 않다면 설치합니다.
+# 이 패키지는 PCA, 군집분석 등 다변량 분석 결과를 ggplot2 기반으로 시각화해 줍니다.
+# install.packages("factoextra")
+library(factoextra)
+library(ggplot2) # factoextra는 ggplot2 기반으로 동작합니다.
+```
+
+---
+
+``` R
+# 2. PCA 재실행 (이전 코드와 연결)
+# 이전 단계에서 생성한 pca_mtcars 객체를 그대로 사용하거나,
+# 코드의 독립성을 위해 여기서 다시 실행합니다.
+pca_mtcars <- prcomp(mtcars, scale. = TRUE)
+```
+
+---
+
+
+``` R
+# 3. R 기본 함수를 이용한 Biplot 시각화
+# biplot() 함수는 제1주성분과 제2주성분 공간에
+# 관측치(행 이름)와 변수(화살표)를 함께 시각화합니다.
+# cex 인자를 사용하여 관측치와 변수 라벨의 글자 크기를 조절할 수 있습니다.
+biplot(pca_mtcars, 
+       scale = 0, # 관측치와 변수 간의 상대적 크기 조절
+       cex = c(0.6, 0.8), # cex = c(관측치 글자크기, 변수 글자크기)
+       main = "Biplot of mtcars data (Base R)")
+```
+
+실행결과
+
+<img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/6c951ecd-af5c-4f99-a513-04ade9ff2b39" />
+
+
+
+---
+``` R 
+# 4. factoextra 패키지를 이용한 고급 시각화
+# factoextra는 더 미려하고 정보량이 많은 그래프를 쉽게 만들 수 있습니다.
+
+# 4.1. 관측치(Individuals) 플롯
+# 각 자동차 모델(관측치)이 주성분 공간에 어떻게 분포하는지 보여줍니다.
+# - col.ind = "cos2": 각 점의 시각화 품질(representation quality)에 따라 색을 입힙니다.
+#   (색이 진할수록 해당 2차원 평면에서 잘 표현됨)
+# - repel = TRUE: 텍스트가 겹치지 않도록 자동으로 위치를 조정합니다.
+fviz_pca_ind(pca_mtcars,
+             col.ind = "cos2", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE,     
+             ggtheme = theme_minimal(),
+             title = "PCA Individuals Plot (factoextra)")
+```
+
+실행결과
+
+<img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/68e64702-5e0a-4da4-aa04-a3daace88c62" />
+
+
+---
+
+``` R
+# 4.2. 변수(Variables) 플롯 - 상관관계 원(Correlation Circle)
+# 각 변수(화살표)가 주성분에 얼마나 기여하는지 보여줍니다.
+# - 화살표가 길고 특정 축(Dim1, Dim2)에 가까울수록 해당 주성분과의 상관관계가 높습니다.
+# - col.var = "contrib": 각 변수가 주성분 생성에 기여한 정도에 따라 색을 입힙니다.
+fviz_pca_var(pca_mtcars,
+             col.var = "contrib", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE,
+             ggtheme = theme_minimal(),
+             title = "PCA Variables Plot (factoextra)")
+```
+
+실행결과
+
+<img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/bf5a1c4f-0ae2-4002-b20d-123fdb4eab61" />
+
+
+---
+
+``` R
+# 4.3. Biplot (관측치와 변수 동시 시각화)
+# factoextra의 biplot은 가독성이 더 높고 사용자 정의가 용이합니다.
+# - geom.ind = "point": 관측치는 점으로만 표시하여 변수 화살표에 집중할 수 있게 합니다.
+fviz_pca_biplot(pca_mtcars,
+                repel = TRUE,
+                geom.ind = "point",   # 관측치는 점으로 표시
+                col.var = "#E7B800",  # 변수 화살표 색상
+                col.ind = "#696969",  # 관측치 점 색상
+                ggtheme = theme_minimal(),
+                title = "PCA Biplot (factoextra)")
+```
+
+실행결과
+
+<img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/59b88dc4-37f5-4f2b-a1c4-383cef6bbcf7" />
+
+
+---
+
+</details>
 
 ## 예상 질문: 표준화와 중심화가 같은 내용인가?
 
