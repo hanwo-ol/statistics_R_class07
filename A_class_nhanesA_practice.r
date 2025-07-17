@@ -1,5 +1,5 @@
 ## 1. 데이터 준비 및 기본 정보 확인 ####
-
+    
 # --- 데이터 준비 ---
 # nhanesA 패키지가 없다면 설치
 install.packages("nhanesA")
