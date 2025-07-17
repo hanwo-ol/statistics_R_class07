@@ -268,9 +268,11 @@ fviz_pca_biplot(pca_mtcars,
 <img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/59b88dc4-37f5-4f2b-a1c4-383cef6bbcf7" />
 
 
----
+
 
 </details>
+
+---
 
 ## 예상 질문: 표준화와 중심화가 같은 내용인가?
 
