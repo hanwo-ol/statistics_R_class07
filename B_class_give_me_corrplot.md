@@ -105,7 +105,7 @@ corrplot(
   addCoef.col = "black",
   tl.col = "black",
   tl.srt = 45,
-  diag = FALSE,
+  diag = TRUE,
   cl.pos = "r",
   title = "Ecosystem Service Correlation Matrix",
   mar = c(0,0,1,0),
