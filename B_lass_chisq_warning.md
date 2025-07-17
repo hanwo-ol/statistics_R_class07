@@ -1,8 +1,8 @@
 ### 경고 메시지의 원인
     
 ``` 
-
-> chisq_test <- chisq.test(df$age, df$edu)
+   
+> chisq_test <- chisq.test(df$age, df$edu )
 Warning message:
 In chisq.test(df$age, df$edu) :
   카이제곱 approximation은 정확하지 않을수도 있습니다
