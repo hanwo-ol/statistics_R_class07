@@ -1,5 +1,5 @@
 ### 경고 메시지의 원인
-
+    
 ``` 
 
 > chisq_test <- chisq.test(df$age, df$edu)
