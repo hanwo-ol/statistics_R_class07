@@ -1,3 +1,9 @@
+ecosystem service assesment 관련 논문의 실험을 R 특강에서 배운 "corrplot"을 통해 재현하는 과정입니다.
+* 논문: Spatiotemporal differentiation and trade-offs and synergies of ecosystem services in tropical island basins: A case study of three major basins of Hainan Island
+* 링크: [https://www.sciencedirect.com/science/article/pii/S0959652625001489]
+
+---
+
 예시 데이터가 없어서 일부 오류가 생길 수 있습니다.(예시 데이터가 있어야 디버깅이 가능합니다. ㅠㅠ)
 ### 만약 오류가 생겨서 수정이 필요하거나, 예시 데이터 제공이 가능하다면,,, 아래 이메일로 메일 주시면 수정 도움 드리겠습니다.
 * 11015khw@gmail.com
