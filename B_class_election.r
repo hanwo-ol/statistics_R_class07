@@ -3,7 +3,7 @@
 # install.packages("ggplot2")
 library(dplyr)
 library(ggplot2)
-
+    
 # 2. 예제 데이터를 생성합니다.
 df <- data.frame(
   지역별_5 = rep(c(1, 2, 3, 4, 5), each = 100),
