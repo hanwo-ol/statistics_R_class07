@@ -1,5 +1,5 @@
 # 7월 15일 특강에서 사용된 코드입니다. 공부하실 때 참고하시면 될 것 같습니다.
-
+    
 install.packages(c('rgl', 'corrplot', 'igraph', 'vcd', 'lawstat', 'agricolae'))
 install.packages(c('ggplot2', 'gridExtra', 'plyr', 'GGally', 'maps', 'mapproj'))
 
