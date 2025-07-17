@@ -10,7 +10,7 @@ boston_pca_data <- Boston[, !(names(Boston) %in% c("medv", "chas", "rad"))]
 pca_boston <- princomp(boston_pca_data, cor = TRUE)
 getwd()
 # 4. 결과 확인
-# 요약 정보 (각 주성분의 표준편차, 설명 분산 비율)
+# 요약 정보 (각 주성분의 표준편차, 설명 분산 비율)   
 summary(pca_boston)
 
 # 적재계수 (Loadings)
