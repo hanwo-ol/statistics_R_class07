@@ -265,7 +265,8 @@ fviz_pca_biplot(pca_mtcars,
 
 실행결과
 
-<img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/59b88dc4-37f5-4f2b-a1c4-383cef6bbcf7" />
+<img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/2e98f133-0860-4bed-b907-4c2ab64395ff" />
+
 
 
 
