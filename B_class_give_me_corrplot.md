@@ -21,9 +21,11 @@ library(sp)
 library(GWmodel)
 ```
 
-#### 2단계: 데이터 로드 및 전처리
-* 자신의 환경에 맞게 이 부분을 수정해야 합니다.*
+<details> <summary> 보통의 경우의 방법 </summary>
 
+#### 2단계: 데이터 로드 및 전처리
+* 자신의 환경에 맞게 이 부분을 수정해야 합니다.
+    
 ```R
 # --- 사용자 설정 영역 ---
 
@@ -83,6 +85,8 @@ print("--- 분석용 데이터프레임 생성 완료 ---")
 head(analysis_df)
 ```
 
+
+
 #### 3단계: 상관관계 분석 (`corrplot` 사용)
 *이 부분은 수정 없이 바로 실행할 수 있습니다.*
 
@@ -114,5 +118,128 @@ corrplot(
   col = col_palette
 )
 ```
+
+</details>
+
+<details> <summary> 현재 디렉토리를 기준으로 파일 불러서 처리하기 </summary>
+
+``` R
+
+# --- 필요 패키지 로드 ---
+# install.packages(c("terra", "dplyr", "corrplot")) # 최초 1회만 실행
+library(terra)
+library(dplyr)
+library(corrplot)
+
+# --- 1단계: 설정 (Configuration) ---
+
+# 1. tif 파일이 저장된 폴더 경로 지정
+# 현재 작업 폴더에 파일이 있으므로 경로를 "."으로 설정합니다.
+folder_path <- "."
+
+# 2. 파일명과 그에 해당하는 약칭(Abbreviation)을 매핑(mapping)합니다.
+# 이 방식은 파일 순서가 바뀌어도 정확한 약칭을 찾아주므로 매우 안정적입니다.
+file_abbr_map <- c(
+  "provision_freshwater.tif"  = "FW",
+  "provision_biomass.tif"     = "BM",
+  "cultural_landscape.tif"    = "LS",
+  "regulating_airquality.tif" = "AQ",
+  "regulating_water_p.tif"    = "WP_P",
+  "regulating_water_n.tif"    = "WP_N",
+  "regulating_carbon.tif"     = "CR",
+  "supporting_habitat.tif"    = "HQ"
+  # 필요에 따라 이 목록을 수정, 추가, 삭제하세요.
+)
+
+# --- 2단계: 데이터 로딩 및 전처리 ---
+
+# 1. 설정된 폴더에서 .tif로 끝나는 모든 파일 목록을 자동으로 가져옵니다.
+file_paths_to_load <- list.files(path = folder_path, pattern = "\\.tif$", full.names = TRUE)
+
+# 2. 파일이 하나도 없는 경우 오류 메시지를 출력하고 스크립트를 중지합니다.
+if (length(file_paths_to_load) == 0) {
+  stop("지정된 폴더에 .tif 파일이 없습니다. 경로를 확인해주세요: ", folder_path)
+}
+
+# 3. 불러온 raster 데이터를 저장할 비어있는 리스트(list)를 생성합니다.
+raster_data_list <- list()
+
+# 4. for 반복문을 사용하여 각 tif 파일을 하나씩 처리합니다.
+cat("--- TIF 파일 로딩 시작 ---\n")
+for (file_path in file_paths_to_load) {
+  file_name <- basename(file_path)
+  abbr_name <- file_abbr_map[file_name]
+  
+  if (is.na(abbr_name)) {
+    warning(paste("다음 파일에 대한 약칭이 정의되지 않았습니다 (건너뜀):", file_name))
+    next 
+  }
+  
+  raster_data_list[[abbr_name]] <- rast(file_path)
+  cat(paste(" - 로딩 완료:", file_name, "-> 변수명:", abbr_name, "\n"))
+}
+cat("--- 모든 파일 로딩 완료 ---\n\n")
+
+# 5. 여러 tif 파일을 하나의 래스터 스택으로 합치기
+# 리스트에 저장된 래스터 객체들을 사용하여 스택을 생성합니다.
+raster_stack <- rast(raster_data_list)
+print("--- 래스터 파일 스택 생성 완료 ---")
+
+# ★★★ 중요: 래스터 데이터 확인 ★★★
+# 모든 래스터의 해상도, 좌표계, 범위가 동일한지 확인하세요.
+# 만약 다르다면, 기준 래스터를 정하고 terra::resample, terra::project, terra::crop 등의 함수로 통일시켜야 합니다.
+print(raster_stack)
+
+# 6. 래스터 스택에 지정된 이름이 있는지 확인하고, 분석용 'abbr_names' 벡터 생성
+# 이 변수가 후속 분석 코드와의 호환성을 위해 반드시 필요합니다.
+abbr_names <- names(raster_stack)
+if (is.null(abbr_names) || length(abbr_names) == 0) {
+  stop("래스터 스택에 이름이 지정되지 않았습니다. file_abbr_map 설정을 확인하세요.")
+}
+cat("\n분석에 사용될 변수명 (abbr_names):\n")
+print(abbr_names)
+
+# 7. 분석용 데이터프레임 생성 (NA 값은 제외)
+analysis_df <- as.data.frame(raster_stack, xy = TRUE, na.rm = TRUE)
+print("\n--- 분석용 데이터프레임 생성 완료 ---")
+head(analysis_df)
+
+
+# --- 3단계: 상관관계 분석 (`corrplot` 사용) ---
+
+# 1. 상관관계 분석을 위한 데이터 선택 (좌표 x, y 제외)
+# dplyr::select()를 명시적으로 호출하여 다른 패키지와의 함수 충돌을 방지합니다.
+cor_data <- analysis_df %>% 
+  dplyr::select(all_of(abbr_names))
+
+# 2. 피어슨 상관행렬 계산
+cor_matrix <- cor(cor_data, method = "pearson")
+
+# 3. 시각화를 위한 색상 팔레트 정의
+col_palette <- colorRampPalette(c("#0000FF", "#FFFFFF", "#FF0000"))(200) # Blue-White-Red
+
+# 4. 상관관계 행렬 시각화
+print("\n--- 상관관계 행렬 시각화 (corrplot) ---")
+corrplot(
+  cor_matrix,
+  method = "ellipse",       # 타원 형태로 표현
+  type = "lower",           # 아래쪽 삼각형만 표시
+  addCoef.col = "black",    # 상관계수 색상
+  tl.col = "black",         # 변수명 텍스트 색상
+  tl.srt = 45,              # 변수명 텍스트 회전 각도
+  diag = TRUE,              # 대각선 표시
+  cl.pos = "r",             # 범례 위치 (오른쪽)
+  title = "Ecosystem Service Correlation Matrix",
+  mar = c(0,0,1,0),         # 그래프 여백 조정 (하, 좌, 상, 우)
+  col = col_palette         # 위에서 정의한 색상 팔레트 사용
+)
+
+
+```
+
+
+</details>
+
+
 
 ### GWR 분석은 실제 좌표계로 형성이 된 tif파일들이 있으면 가능하니, 필요한경우 연락주세요요
