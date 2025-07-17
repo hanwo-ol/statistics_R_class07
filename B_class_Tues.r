@@ -1,5 +1,5 @@
 # 조교가 예습하면서 미리 해봤을 뿐, 코드가 완벽하게 같지 않을 수 있습니다.
-
+        
 # install.packages 함수는 CRAN(Comprehensive R Archive Network)에서 패키지를 다운로드하고 설치합니다.
 # c() 함수는 여러 항목을 묶어 하나의 벡터로 만들어 줍니다.
 # 'ggplot2', 'gridExtra' 등은 데이터 시각화 및 조작에 널리 사용되는 패키지들입니다.
