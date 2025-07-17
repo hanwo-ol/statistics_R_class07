@@ -17,40 +17,36 @@ plot(x, xlim=c(0, 2), ylim=c(0, 2), main="B")
 <img width="369" height="265" alt="image" src="https://github.com/user-attachments/assets/e1a6f546-8f11-4ec8-9da7-0cc1f6d6bd54" />
 
 
-이 데이터가 따르는 확률 분포는 다음과 같은 확률 밀도 함수(Probability Density Function, PDF) 수식으로 설명할 수 있습니다.
+### **수식 설명**
 
-### 수식 설명
+데이터 벡터 $\mathbf{x}$의 확률 밀도 함수 $f(\mathbf{x})$는 다음과 같습니다.
 
-데이터 벡터 $\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$의 확률 밀도 함수 $f(\mathbf{x})$는 다음과 같습니다.
+$$f(x_1, x_2) = \frac{1}{2\pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}} \exp\left( -\frac{1}{2(1-\rho^2)} \left[ \left(\frac{x_1-\mu_1}{\sigma_1}\right)^2 - 2\rho\frac{(x_1-\mu_1)(x_2-\mu_2)}{\sigma_1\sigma_2} + \left(\frac{x_2-\mu_2}{\sigma_2}\right)^2 \right] \right)$$
 
-$$f(\mathbf{x}) = \frac{1}{\sqrt{(2\pi)^2 |\Sigma|}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \Sigma^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)$$
-
----
-
-### 코드의 파라미터와 수식의 연결
-
-주어진 R 코드의 파라미터는 수식에서 다음과 같이 사용됩니다.
-
-1.  **평균 벡터 (Mean Vector, $\boldsymbol{\mu}$)**
-    코드에서 `mu <- c(1, 1)`는 각 변수($x_1, x_2$)의 기댓값(평균)이 모두 1임을 의미합니다.
-    $$
-    \boldsymbol{\mu} = \begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
-    $$
-
-2.  **공분산 행렬 (Covariance Matrix, $\Sigma$)**
-    코드에서 `sigma <- matrix(c(0.04, 0.018, 0.018, 0.01), 2, 2)`는 데이터의 분산과 변수 간의 공분산을 정의합니다.
-    $$
-    \Sigma = \begin{pmatrix} \sigma_1^2 & \sigma_{12} \\ \sigma_{21} & \sigma_2^2 \end{pmatrix} = \begin{pmatrix} 0.04 & 0.018 \\ 0.018 & 0.01 \end{pmatrix}
-    $$
-    * **$\sigma_1^2 = 0.04$**: $x_1$의 분산입니다. 따라서 표준편차 $\sigma_1 = \sqrt{0.04} = 0.2$ 입니다.
-    * **$\sigma_2^2 = 0.01$**: $x_2$의 분산입니다. 따라서 표준편차 $\sigma_2 = \sqrt{0.01} = 0.1$ 입니다.
-    * **$\sigma_{12} = 0.018$**: $x_1$과 $x_2$의 공분산으로, 두 변수 간의 선형 관계의 방향과 강도를 나타냅니다.
+이 수식은 아래 코드의 파라미터들로 구체화됩니다.
 
 ---
 
-### 상관계수와 분포의 형태
+### **코드의 파라미터와 수식의 연결**
 
-공분산과 각 변수의 표준편차를 이용해 **상관계수(Correlation Coefficient, $\rho$)**를 계산할 수 있습니다. 상관계수는 두 변수 간의 선형 관계의 강도를 -1에서 1 사이의 값으로 나타냅니다.
+주어진 R 코드의 파라미터는 수식의 각 부분에 다음과 같이 해당합니다.
+
+1.  **평균 (Mean, $\mu_1, \mu_2$)**
+    코드에서 `mu <- c(1, 1)`는 각 변수($x_1, x_2$)의 기댓값(평균)을 의미합니다.
+    * $\mu_1 = 1$
+    * $\mu_2 = 1$
+
+2.  **분산 (Variance, $\sigma_1^2, \sigma_2^2$) 및 공분산 (Covariance, $\sigma_{12}$)**
+    코드의 `sigma` 행렬은 분산과 공분산을 정의합니다.
+    * $x_1$의 분산: $\sigma_1^2 = 0.04$ (따라서 표준편차 $\sigma_1 = 0.2$)
+    * $x_2$의 분산: $\sigma_2^2 = 0.01$ (따라서 표준편차 $\sigma_2 = 0.1$)
+    * $x_1$과 $x_2$의 공분산: $\sigma_{12} = 0.018$
+
+---
+
+### **상관계수와 분포의 형태**
+
+위 파라미터들을 이용해 **상관계수(Correlation Coefficient, $\rho$)**를 계산할 수 있습니다. 상관계수는 두 변수 간의 선형 관계의 강도를 나타냅니다.
 
 $$\rho = \frac{\sigma_{12}}{\sigma_1 \sigma_2} = \frac{0.018}{0.2 \times 0.1} = \frac{0.018}{0.02} = 0.9$$
 
