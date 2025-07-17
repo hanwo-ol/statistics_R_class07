@@ -3,8 +3,10 @@
 * 11015khw@gmail.com
     
 #### 1단계: 필요 패키지 설치 및 라이브러리 로드
-*이 스크립트를 처음 실행할 때만 설치하면 됩니다.*
+* 이 스크립트를 처음 실행할 때만 설치하면 됩니다.*
+* 처음 까실 때 시간이 무지막지하게 걸립니다...
 
+  
 ```R
 # 1. 필요 패키지 설치
 install.packages(c("terra", "tidyverse", "corrplot", "RColorBrewer", "cowplot", "sp", "GWmodel"))
