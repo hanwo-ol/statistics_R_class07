@@ -247,5 +247,145 @@ corrplot(
 </details>
 
 
+<details> 
+
+<summary> 나 </summary>
+
+``` R
+# 1. 필요 패키지 설치
+#install.packages(c("terra", "tidyverse", "corrplot", "RColorBrewer", "cowplot", "sp", "GWmodel"))
+
+# 2. 라이브러리 로드
+library(terra)
+library(tidyverse)
+library(corrplot)
+library(RColorBrewer)
+library(cowplot)
+library(sp)
+library(GWmodel)
+
+setwd("C:/Users/11015/Downloads/tifs")
+getwd()
+
+
+# --- 1단계: 설정 (Configuration) ---
+
+# 1. tif 파일이 저장된 폴더 경로 지정
+# 현재 작업 폴더에 파일이 있으므로 경로를 "."으로 설정합니다.
+folder_path <- "."
+
+# 2. 파일명과 그에 해당하는 약칭(Abbreviation)을 매핑(mapping)합니다.
+# 이 방식은 파일 순서가 바뀌어도 정확한 약칭을 찾아주므로 매우 안정적입니다.
+file_abbr_map <- c(
+  "coastal_risk_reduction_for_coastal_populations_thresholded.tif"  = "CR",
+  "nitrogen_retention_for_downstream_populations.tif"     = "NR",
+  "sediment_retention_for_downstream_populations.tif"    = "SR",
+  "nature_access_for_people.tif" = "NA"#,
+  #"regulating_water_p.tif"    = "WP_P",
+  #"regulating_water_n.tif"    = "WP_N",
+  #"regulating_carbon.tif"     = "CR",
+  #"supporting_habitat.tif"    = "HQ"
+  # 필요에 따라 이 목록을 수정, 추가, 삭제하세요.
+)
+
+# --- 2단계: 데이터 로딩 및 전처리 ---
+
+# 1. 설정된 폴더에서 .tif로 끝나는 모든 파일 목록을 자동으로 가져옵니다.
+file_paths_to_load <- list.files(path = folder_path, pattern = "\\.tif$", full.names = TRUE)
+
+# 2. 파일이 하나도 없는 경우 오류 메시지를 출력하고 스크립트를 중지합니다.
+if (length(file_paths_to_load) == 0) {
+  stop("지정된 폴더에 .tif 파일이 없습니다. 경로를 확인해주세요: ", folder_path)
+}
+
+# 3. 불러온 raster 데이터를 저장할 비어있는 리스트(list)를 생성합니다.
+raster_data_list <- list()
+
+# 4. for 반복문을 사용하여 각 tif 파일을 하나씩 처리합니다.
+cat("--- TIF 파일 로딩 시작 ---\n")
+for (file_path in file_paths_to_load) {
+  file_name <- basename(file_path)
+  abbr_name <- file_abbr_map[file_name]
+  
+  if (is.na(abbr_name)) {
+    warning(paste("다음 파일에 대한 약칭이 정의되지 않았습니다 (건너뜀):", file_name))
+    next 
+  }
+  
+  raster_data_list[[abbr_name]] <- rast(file_path)
+  cat(paste(" - 로딩 완료:", file_name, "-> 변수명:", abbr_name, "\n"))
+}
+cat("--- 모든 파일 로딩 완료 ---\n\n")
+
+# --- ★★★ 오류 수정: 데이터 통일 (Harmonization) ★★★ ---
+# 모든 래스터의 범위(extent)와 해상도(resolution)를 통일시키는 과정입니다.
+
+cat("--- 래스터 데이터 통일 시작 ---\n")
+# 1. 첫 번째 래스터를 '기준(reference)'으로 설정합니다.
+reference_raster <- raster_data_list[[1]]
+cat(paste("기준 래스터:", names(raster_data_list)[1], "\n"))
+
+# 2. 통일된 래스터를 저장할 새로운 리스트를 생성합니다.
+aligned_raster_list <- list()
+aligned_raster_list[[names(raster_data_list)[1]]] <- reference_raster # 기준 래스터를 먼저 추가
+
+# 3. 나머지 래스터들을 기준 래스터에 맞게 리샘플링(resample)합니다.
+if (length(raster_data_list) > 1) {
+  for (i in 2:length(raster_data_list)) {
+    current_raster_name <- names(raster_data_list)[i]
+    cat(paste(" - 처리 중:", current_raster_name, "-> 기준에 맞게 변환...\n"))
+    
+    # terra::resample 함수로 현재 래스터를 기준 래스터에 맞춥니다.
+    # method='bilinear'는 연속적인 값에 적합한 보간법입니다.
+    aligned_raster <- terra::resample(raster_data_list[[i]], reference_raster, method = "bilinear")
+    
+    # 변환된 래스터를 새 리스트에 추가합니다.
+    aligned_raster_list[[current_raster_name]] <- aligned_raster
+  }
+}
+cat("--- 모든 래스터 통일 완료 ---\n\n")
+
+
+# 4. 통일된 래스터 리스트를 사용하여 최종 스택을 생성합니다.
+raster_stack <- rast(aligned_raster_list)
+print("--- 래스터 파일 스택 생성 완료 ---")
+print(raster_stack)
+
+# 5. 래스터 스택의 이름으로 분석용 'abbr_names' 벡터 생성
+abbr_names <- names(raster_stack)
+
+# 6. 분석용 데이터프레임 생성 (NA 값은 제외)
+analysis_df <- as.data.frame(raster_stack, xy = TRUE, na.rm = TRUE)
+print("\n--- 분석용 데이터프레임 생성 완료 ---")
+head(analysis_df)
+
+
+# --- 3단계: 상관관계 분석 (`corrplot` 사용) ---
+
+# (이 부분은 수정 없이 그대로 실행됩니다)
+cor_data <- analysis_df %>% 
+  dplyr::select(all_of(abbr_names))
+
+cor_matrix <- cor(cor_data, method = "pearson")
+
+col_palette <- colorRampPalette(c("#0000FF", "#FFFFFF", "#FF0000"))(200)
+
+print("\n--- 상관관계 행렬 시각화 (corrplot) ---")
+corrplot(
+  cor_matrix,
+  method = "ellipse",
+  type = "lower",
+  addCoef.col = "black",
+  tl.col = "black",
+  tl.srt = 45,
+  diag = TRUE,
+  cl.pos = "r",
+  title = "Ecosystem Service Correlation Matrix",
+  mar = c(0,0,1,0),
+  col = col_palette
+)
+```
+
+</details>
 
 ### GWR 분석은 실제 좌표계로 형성이 된 tif파일들이 있으면 가능하니, 필요한경우 연락주세요요
