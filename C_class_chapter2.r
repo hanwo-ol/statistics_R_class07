@@ -1,3 +1,5 @@
+# 해당 코드를 다 실행 해본 후에, C_class_chaper2_****.md 시리즈를 보시면서 해석을 같이 비교해보세요(제가 정답이 아닐때도 있습니다)
+
 #install.packages(c("mclust", "ggplot2", "caret", "ROCR", "rpart", "randomForest"))
 
 ### k-평균 군집분석 예제 (모의실험) (page25~26)
