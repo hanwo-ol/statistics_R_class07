@@ -132,4 +132,134 @@ plot(mclust_iris, what = "classification", main="Mixture Model Classification")
     *   `Mclust(iris_data, G = 3)`: `iris` 데이터를 3개의 군집(`G=3`)으로 나누는 모형-기반 군집분석을 수행합니다. `Mclust`는 내부적으로 다양한 공분산 구조 모델을 테스트하고, BIC(베이즈 정보 기준)를 기반으로 데이터에 가장 적합한 모델을 자동으로 선택합니다.
     *   `mclust_iris$classification`: `Mclust`가 최종적으로 각 데이터를 몇 번 군집으로 분류했는지에 대한 정보를 담고 있습니다.
     *   `plot(mclust_iris, what = "classification")`: `Mclust`의 분류 결과를 시각화합니다. 이 플롯은 데이터를 2차원으로 축소(주성분분석 등 이용)하여 산점도를 그리고, 각 점을 분류된 군집에 따라 다른 색과 모양으로 표시하며, 각 군집의 확률적 경계(타원)를 함께 보여줍니다.
-*   **그래프 해석**: 생성된 그래프는 3개의 군집이 서로 다른 색과 모양으로 명확하게 구분되어 있음을 보여줍니다. 각 군집을 감싸는 타원은 해당 군집의 확률적 분포(평균, 공분산 구조)를 시각적으로 나타냅니다. 이 결과를 다른 군집분석 방법의 시각화 결과와 비교하여 어떤 방법이 `iris` 데이터의 구조를 가장 잘 표현하는지 평가할 수 있습니다.
+
+---
+
+파트 2
+---
+
+### 분석의 목표: 어떤 군집분석 방법이 가장 뛰어난가?
+
+이 단계의 목표는 **정답(`iris_species`)**과 3가지 군집분석 방법의 결과를 비교하여, **어떤 방법이 `iris` 데이터의 실제 품종 구조를 가장 잘 찾아냈는지**를 객관적으로 평가하고 시각적으로 확인하는 것입니다.
+
+---
+
+### 5. 결과 비교
+
+#### A. 표(Table)로 비교
+
+##### 코드
+```R
+cat("\n--- K-Means Clustering vs. Actual Species ---\n")
+print(table(K_Means = km_clusters, Actual = iris_species))
+
+cat("\n--- Hierarchical (Ward) vs. Actual Species ---\n")
+print(table(Hierarchical_Ward = hc_clusters_ward, Actual = iris_species))
+
+cat("\n--- Mixture Model vs. Actual Species ---\n")
+print(table(Mixture_Model = mclust_clusters, Actual = iris_species))
+```
+##### 결과 + 설명
+*   **코드 설명**: `table()` 함수는 두 범주형 변수 간의 **분할표(contingency table) 또는 교차표(cross-tabulation)**를 생성합니다. 여기서는 각 군집분석 방법의 분류 결과(행)와 실제 품종 정보(열)를 교차하여, 어떤 품종이 어떤 군집으로 분류되었는지를 한눈에 보여줍니다.
+*   **`K-Means` vs. `Actual` 결과**:
+    ```
+           Actual
+    K_Means setosa versicolor virginica
+          1     50          0         0  <-- (1)
+          2      0         48        14  <-- (2)
+          3      0          2        36  <-- (3)
+    ```
+    *   **(1) 완벽한 분류**: K-평균 군집분석의 1번 군집은 실제 `setosa` 품종 50개를 완벽하게 모두 찾아냈습니다.
+    *   **(2) 일부 오분류**: 2번 군집은 `versicolor` 48개와 `virginica` 14개를 포함하고 있습니다.
+    *   **(3) 일부 오분류**: 3번 군집은 `versicolor` 2개와 `virginica` 36개를 포함하고 있습니다.
+    *   **해석**: `setosa`는 완벽히 구분했지만, `versicolor`와 `virginica`는 총 16개(14+2)가 잘못 분류되었습니다.
+
+*   **`Hierarchical (Ward)` vs. `Actual` 결과**:
+    ```
+                     Actual
+    Hierarchical_Ward setosa versicolor virginica
+                    1     50          0         0  <-- (1)
+                    2      0         49        15  <-- (2)
+                    3      0          1        35  <-- (3)
+    ```
+    *   **해석**: `setosa`는 완벽히 구분했고, `versicolor`와 `virginica`는 총 16개(15+1)가 잘못 분류되었습니다. K-평균 군집분석과 거의 유사한 성능을 보입니다.
+
+*   **`Mixture Model` vs. `Actual` 결과**:
+    ```
+                 Actual
+    Mixture_Model setosa versicolor virginica
+                1     50          0         0  <-- (1)
+                2      0         45         0  <-- (2)
+                3      0          5        50  <-- (3)
+    ```
+    *   **(1) 완벽한 분류**: 혼합모형 군집분석의 1번 군집 역시 `setosa` 50개를 완벽하게 찾아냈습니다.
+    *   **(2) 향상된 분류**: 2번 군집은 `versicolor` 45개만 포함하고 있습니다.
+    *   **(3) 거의 완벽한 분류**: 3번 군집은 `versicolor` 5개와 `virginica` 50개를 포함하고 있습니다.
+    *   **해석**: `versicolor` 5개만 잘못 분류되었을 뿐, 나머지 145개는 모두 정확하게 분류했습니다. 세 가지 방법 중 **가장 뛰어난 성능**을 보여줍니다.
+
+---
+
+#### B. PCA를 이용한 시각적 비교
+
+##### 코드
+```R
+pca_result <- prcomp(iris_data, scale. = TRUE)
+pca_data <- as.data.frame(pca_result$x[, 1:2])
+
+comparison_df <- data.frame(...)
+
+g1 <- ggplot(comparison_df, aes(x = PC1, y = PC2)) + ...
+g2 <- ...
+g3 <- ...
+g4 <- ...
+g1 + g2 + g3 + g4
+```
+##### 결과 + 설명
+*   **코드 설명**:
+    *   `prcomp(..., scale. = TRUE)`: 4개의 변수(4차원)를 가진 `iris_data`를 **주성분 분석(PCA)**하여 2개의 주성분(2차원)으로 **차원 축소**합니다. `scale. = TRUE`는 변수들의 스케일을 표준화하는 중요한 옵션입니다.
+    *   `as.data.frame(pca_result$x[, 1:2])`: PCA 결과에서 첫 번째(PC1)와 두 번째(PC2) 주성분 점수만 추출하여 데이터프레임으로 만듭니다.
+    *   `comparison_df <- data.frame(...)`: 시각화를 위해 PCA 결과와 실제 품종 정보, 그리고 3가지 군집분석 결과를 하나의 데이터프레임으로 통합합니다.
+    *   `ggplot(...)`: `ggplot2`를 이용해 4개의 산점도를 그립니다. 모든 그래프의 x, y축은 PC1, PC2로 동일하며, 각 점의 색상만 다르게 지정합니다.
+        *   `g1`: 실제 품종(`Ground_Truth`)에 따라 색상 지정
+        *   `g2`: K-평균 군집 결과(`K_Means`)에 따라 색상 지정
+        *   `g3`: 계층적 군집 결과(`Hierarchical_Ward`)에 따라 색상 지정
+        *   `g4`: 혼합모형 군집 결과(`Mixture_Model`)에 따라 색상 지정
+    *   `g1 + g2 + g3 + g4`: `patchwork` 패키지의 기능으로 4개의 그래프를 나란히 배열하여 비교합니다.
+*   **그래프 해석**: 4개의 그래프를 나란히 비교함으로써, 각 군집분석 방법이 실제 품종(Ground Truth)의 분포를 얼마나 유사하게 재현했는지 시각적으로 한눈에 파악할 수 있습니다. 앞서 표에서 확인했듯이, K-평균과 계층적 군집분석은 `versicolor`와 `virginica`의 경계에서 오분류가 꽤 있는 반면, 혼합모형 군집분석은 실제 품종 분포와 거의 유사한 패턴을 보여줌을 확인할 수 있습니다.
+
+<img width="2561" height="1494" alt="image" src="https://github.com/user-attachments/assets/1096d444-4202-4a35-9d91-1d5c9af050cb" />
+
+
+
+---
+
+#### C. 통계 지표를 이용한 정량적 평가
+
+##### 코드
+```R
+library(fpc)
+# K-means 평가
+cluster.stats(d = dist(iris_data), as.numeric(iris_species), km_clusters)$corrected.rand
+# Hierarchical (Ward)
+cluster.stats(d = dist(iris_data), as.numeric(iris_species), as.numeric(hc_clusters_ward))$corrected.rand
+# Model-based (Mclust)
+cluster.stats(d = dist(iris_data), as.numeric(iris_species), as.numeric(mclust_clusters))$corrected.rand
+```
+##### 결과 + 설명
+*   **코드 설명**: `fpc` 패키지의 `cluster.stats()` 함수는 군집분석 결과를 평가하는 다양한 통계 지표를 제공합니다. 여기서는 그 중 **Adjusted Rand Index(수정된 랜드 지수)**를 사용합니다.
+    *   **Adjusted Rand Index**: 두 개의 군집화 결과(여기서는 '정답'과 '분석 결과')가 얼마나 유사한지를 측정하는 지표입니다.
+        *   **1**: 두 군집화 결과가 완벽하게 일치함.
+        *   **0**: 두 군집화 결과가 무작위(랜덤) 수준으로 일치함 (관련성 없음).
+        *   **음수값**: 무작위 수준보다도 일치하지 않음.
+*   **결과**:
+    *   K-means: `0.7302383`
+    *   Hierarchical (Ward): `0.7311986`
+    *   Model-based (Mclust): `0.9038742`
+*   **결과 해석**:
+    *   K-평균과 계층적 군집분석은 약 0.73의 Adjusted Rand Index 값을 보여, 정답과 꽤 높은 유사성을 보입니다.
+    *   **혼합모형 군집분석은 0.904라는 매우 높은 값**을 보여, 정답과 거의 일치하는 수준의 군집화 결과를 만들어냈음을 객관적인 수치로 증명합니다.
+    *   이는 앞서 분할표와 시각화로 확인했던 **"혼합모형이 가장 뛰어난 성능을 보였다"**는 결론을 통계적으로 강력하게 뒷받침합니다.
+
+### 최종 종합 결론
+
+`iris` 데이터에 대한 세 가지 군집분석 방법을 비교한 결과, **모형-기반 군집분석(혼합모형)**이 K-평균이나 계층적 군집분석에 비해 월등히 뛰어난 성능을 보였습니다. 이는 분할표 비교, PCA를 이용한 시각적 비교, 그리고 Adjusted Rand Index라는 정량적 평가 지표를 통해 일관되게 확인되었습니다. 이는 `iris` 데이터의 각 품종이 서로 다른 평균과 공분산 구조를 가진 정규분포를 따를 것이라는 모형-기반 군집분석의 가정이 데이터의 실제 특성과 가장 잘 부합했기 때문으로 해석할 수 있습니다.
