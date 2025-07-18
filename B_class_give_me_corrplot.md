@@ -7,7 +7,38 @@ ecosystem service assesment 관련 논문의 실험을 R 특강에서 배운 "co
 예시 데이터가 없어서 일부 오류가 생길 수 있습니다.(예시 데이터가 있어야 디버깅이 가능합니다. ㅠㅠ)
 ### 만약 오류가 생겨서 수정이 필요하거나, 예시 데이터 제공이 가능하다면,,, 아래 이메일로 메일 주시면 수정 도움 드리겠습니다.
 * 11015khw@gmail.com
-    
+
+
+* 07/18 ㅅㅅㄹ님 요청: 상관계수 글자 크기 줄이려면...?
+<details> <summary> 해당 코드 열기 </summary>
+
+corrplot에서 코드에 `cex.col` 인자를 추가하여 글씨 크기를 줄이고 늘릴 수 있습니다.
+사실 cex.col 건드는 거보단 number.digits로 10자리까지 출력해달라고 하는게 더 강제성있긴 합니다.
+
+``` R
+corrplot(
+  cor_matrix,
+  method = "ellipse",       # 타원 형태로 표현
+  type = "lower",           # 아래쪽 삼각형만 표시
+  addCoef.col = "black",    # 상관계수 색상
+  cex.col = 0.7,            # 상관계수 글씨 크기 조절 (👈 이 부분)
+  tl.col = "black",         # 변수명 텍스트 색상
+  number.digits = 2         # 또는!!!!  👈 소수점 자리수 2로 지정
+  tl.srt = 45,              # 변수명 텍스트 회전 각도
+  diag = TRUE,              # 대각선 표시
+  cl.pos = "r",             # 범례 위치 (오른쪽)
+  title = "Ecosystem Service Correlation Matrix",
+  mar = c(0,0,1,0),         # 그래프 여백 조정 (하, 좌, 상, 우)
+  col = col_palette         # 위에서 정의한 색상 팔레트 사용
+)
+```
+
+</details>     
+
+만든 플랏의 크기를 지정해서 저장하고 싶다면...
+* `B_class_how_to_save_my_plot.md`를 참고하세요!
+
+
 #### 1단계: 필요 패키지 설치 및 라이브러리 로드
 * 이 스크립트를 처음 실행할 때만 설치하면 됩니다.*
 * 처음 까실 때 시간이 무지막지하게 걸립니다...
