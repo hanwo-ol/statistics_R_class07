@@ -5,21 +5,39 @@
 
 [https://github.com/hanwo-ol/statistics_R_class07/]
 
-안녕하세요! R을 이용한 통계자료분석 강의를 위한 페이지입니다.
-* 수강 중 도움이 필요하시면 손을 들어주세요!
-* 파일에 오류가 생겼다면 아래 링크에서 다시 다운 받아주시면 됩니다.
+안녕하세요! 전북대 통계학과 석사과정 중에 있는 김한울 이라고 합니다! 본 R을 이용한 통계자료분석 강의의 실습 조교를 맡아 진행했습니다.
+* 다시 방문해주셔서 감사합니다.
+* 본 페이지는 2025년 07월 14일 ~ 7월 18일, 5일 동안 진행한 특강 참여 선생님들을 위한 페이지입니다. 5일 간 궂은 날씨에도 나와 참여해주셔서 너무 감사합니다.
+* 교수님들께서 사용하신 자료, 코드 및 제가 조금씩 찾아본 자료 등을 정리해뒀으니, 선생님들께서 집에서 혼자 해보실 때 많은 도움 되시면 좋겠습니다.
 
 ---
 
-# C과정 참고자료 다운로드 (이영미 교수님 강좌, 목요일&금요일)
-* 목요일 수업 종료 후에 링크 정리해드리겠습니다.
 
-<details> <summary> 참고자료 보기 </summary>
 
-* **정리 중**
- 
+# A과정 데이터 및 참고자료 다운로드 (최혜미 교수님 강좌, 월요일)
+
+<details>
+<summary>링크 및 예제 보기</summary>
+
+1. 데이터 & 교재 PDF & 참고자료
+[https://drive.google.com/drive/folders/1ggq9oP9Qc0Tye70EOFdpluZzqFVPIZAB?usp=sharing]
+
+2. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]    
+
+3. 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
+* 데이터 설명
+    * 선거 민주주의 (Electoral): 자유롭고 공정한 선거가 보장되는 정도를 측정합니다.
+    * 자유 민주주의 (Liberal): 개인의 자유와 권리가 법치에 의해 보호받는 정도를 평가합니다.
+    * 참여 민주주의 (Participatory): 시민들이 정치 과정에 적극적으로 참여하는 수준을 측정합니다.
+    * 심의 민주주의 (Deliberative): 정치적 결정이 공적인 추론과 논증을 통해 이루어지는 정도를 평가합니다.
+    * 평등 민주주의 (Egalitarian): 모든 사회 집단에 걸쳐 정치적 권력과 자원이 동등하게 분배되는 정도를 측정합니다.
+* 데이터 구조
+    * 형식: 데이터 프레임 (Data Frame)
+    * 관측치 수: 27,913개
+    * 변수 수: 4,607개
+    * 최신 v15 데이터셋은 1789년부터 2024년까지 전 세계 202개 국가를 다루며, **500개 이상의 지표(indicators), 81개의 지수(indices), 5개의 상위 지수(high-level indices)** 를 포함합니다.
+
 </details>
-
 
 ---
 
@@ -47,42 +65,17 @@
 
 ---
 
+# C과정 참고자료 다운로드 (이영미 교수님 강좌, 목요일&금요일)
 
----
+<details> <summary> 참고자료 보기 </summary>
 
-# A과정 데이터 및 참고자료 다운로드 (최혜미 교수님 강좌, 월요일)
-<details>
-<summary>링크 및 예제 보기</summary>
-
-1. 데이터 & 교재 PDF & 참고자료
-[https://drive.google.com/drive/folders/1ggq9oP9Qc0Tye70EOFdpluZzqFVPIZAB?usp=sharing]
-
-2. 의료 데이터 패키지 이용한 기초 R 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_nhanesA_practice.r]    
-
-3. 정치 상황 관련 데이터 이용한 실습 코드: [https://github.com/hanwo-ol/statistics_R_class07/blob/main/A_class_vdeminstitute.r]
-* 데이터 설명
-    * 선거 민주주의 (Electoral): 자유롭고 공정한 선거가 보장되는 정도를 측정합니다.
-    * 자유 민주주의 (Liberal): 개인의 자유와 권리가 법치에 의해 보호받는 정도를 평가합니다.
-    * 참여 민주주의 (Participatory): 시민들이 정치 과정에 적극적으로 참여하는 수준을 측정합니다.
-    * 심의 민주주의 (Deliberative): 정치적 결정이 공적인 추론과 논증을 통해 이루어지는 정도를 평가합니다.
-    * 평등 민주주의 (Egalitarian): 모든 사회 집단에 걸쳐 정치적 권력과 자원이 동등하게 분배되는 정도를 측정합니다.
-* 데이터 구조
-    * 형식: 데이터 프레임 (Data Frame)
-    * 관측치 수: 27,913개
-    * 변수 수: 4,607개
-    * 최신 v15 데이터셋은 1789년부터 2024년까지 전 세계 202개 국가를 다루며, **500개 이상의 지표(indicators), 81개의 지수(indices), 5개의 상위 지수(high-level indices)** 를 포함합니다.
-
+* **정리 중**
+ 
 </details>
 
-
----
 ---
 
-
-
----
-
-## 실습 중 궁금하신 사항 손들어주시면 달려가겠습니다~
+## 추후 도움이 필요하시다면 아래 연락처로 메일 남겨주세요! 
 - 실습조교: 통계학과 대학원생 김한울
 - R 사용 도움 필요하신 분: 11015khw@gmail.com
 - ggplot 좀 더 이쁘게 그림 다듬기: [https://blog.naver.com/d0njusey0/223089751106]
