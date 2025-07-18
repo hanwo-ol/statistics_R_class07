@@ -1,5 +1,6 @@
-# 해당 코드를 다 실행 해본 후에, C_class_chaper2_****.md 시리즈를 보시면서 해석을 같이 비교해보세요(제가 정답이 아닐때도 있습니다)
+* 해당 코드를 다 실행 해본 후에, C_class_chaper2_****.md 시리즈를 보시면서 해석을 같이 비교해보세요(제가 정답이 아닐때도 있습니다)*
 
+``` R
 #install.packages(c("mclust", "ggplot2", "caret", "ROCR", "rpart", "randomForest"))
 
 ### k-평균 군집분석 예제 (모의실험) (page25~26)
@@ -39,8 +40,9 @@ km2$withinss # 군집 내 제곱합
 par(mfrow=c(1, 2))
 plot(xdata, pch=km1$cluster, col=km1$cluster, cex=2)
 plot(xdata, pch=km2$cluster, col=km2$cluster, cex=2)
+```
 
-
+``` R
 #####iris 데이터 k-평균 군집분석 (nstart) (page29)#########
 par(mfrow=c(1,1))
 
@@ -66,7 +68,10 @@ km.res25$size    # 군집별 관측치 개수
 plot(xdata, pch=20, col=km.res25$cluster+1,
      cex=1.5, main="k-means clustering with 3 clusters")
 
+```
 
+
+``` R
 ##### Elbow Method로 최적 군집 수 찾기(page30)######
 N = 10
 infom = c()
@@ -79,7 +84,10 @@ for (i in 1:N)
 plot(1:N, infom, type="b", col=2, pch=16,
      xlab="number of clusters", ylab="information")
 
+```
 
+
+```
 ##### iris 데이터 계층적 군집분석(page34) ######
 data("iris"); iris
 xdata=iris[, c(2, 4)]
@@ -102,6 +110,9 @@ plot(xdata, pch=20, cex=2, col=ct[,"2"], main="2 clusters")
 plot(xdata, pch=20, cex=2, col=ct[,"4"], main="4 clusters")
 
 par(mfrow=c(1,1))
+```
+
+``` R
 
 ###### 혼합모형 군집분석 page36~37 ################
 # 데이터 생성
@@ -129,7 +140,9 @@ M2=Mclust(x, G=2, modelNames = "E")
 M2$parameters # 추정 모수
 M2$z[, 2] > 0.5 # 군집 2에 속할 확률
 
+```
 
+``` R
 
 ######## 챌린저 호 데이터 로지스틱 회귀분석 page44~45######
 # 자료 불러오기
@@ -153,6 +166,37 @@ summary(fit)
 predict(fit, data.frame(temperature=30)) # linear predictor (로짓 값)
 predict(fit, data.frame(temperature=30), type="response") # estimated prob. (확률 값)
 
+```
+
+
+---
+
+# adult
+
+## 데이터 셋 설명
+
+| 변수명           | 역할     | 데이터 타입 | 의미/그룹           | 값 목록 또는 설명                                                                                                                                       | 결측치 존재 |
+|------------------|----------|--------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|
+| age              | Feature  | Integer      | Age                  | N/A                                                                                                                                                     | no           |
+| workclass        | Feature  | Categorical  | Income               | Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked                                                 | yes          |
+| fnlwgt           | Feature  | Integer      |                      |                                                                                                                                                         | no           |
+| education        | Feature  | Categorical  | Education Level      | Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool    | no           |
+| education-num    | Feature  | Integer      | Education Level      |                                                                                                                                                         | no           |
+| marital-status   | Feature  | Categorical  | Other                | Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse                                              | no           |
+| occupation       | Feature  | Categorical  | Other                | Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, etc.           | yes          |
+| relationship     | Feature  | Categorical  | Other                | Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried                                                                                      | no           |
+| race             | Feature  | Categorical  | Race                 | White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black                                                                                             | no           |
+| sex              | Feature  | Binary       | Sex                  | Female, Male                                                                                                                                             | no           |
+| capital-gain     | Feature  | Integer      |                      |                                                                                                                                                         | no           |
+| capital-loss     | Feature  | Integer      |                      |                                                                                                                                                         | no           |
+| hours-per-week   | Feature  | Integer      |                      |                                                                                                                                                         | no           |
+| native-country   | Feature  | Categorical  | Other                | United-States, Cambodia, England, Puerto-Rico, Canada, Germany, India, China, Philippines, etc.                                                        | yes          |
+| income           | Target   | Binary       | Income               | >50K, <=50K                                                                                                                                              | no           |
+
+
+constrasts함수: 변수 인코딩할 때 확인
+
+``` R
 
 ###########adult 데이터 로지스틱 회귀분석 및 평가 page44~45#############
 # 자료 불러오기 및 전처리
@@ -200,6 +244,11 @@ plot(perf, col=2, main="ROC curve")
 abline(a=0, b=1)
 performance(pred, "auc")@y.values # AUC 값
 
+```
+
+
+
+``` R
 ################## adult 데이터 의사결정나무 및 랜덤포레스트 page50#################
 ### 의사결정나무 ###
 library(rpart)
@@ -240,4 +289,7 @@ plot(perf, col=2, add=TRUE)      # 로지스틱 (파랑)
 plot(perf_tr, col=4, add=TRUE)   # 의사결정나무 (초록)
 abline(a=0, b=1)
 performance(pred_rf, "auc")@y.values
+
+```
+
 
