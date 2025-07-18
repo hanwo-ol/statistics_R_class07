@@ -66,11 +66,32 @@
 
 ---
 
-# C과정 참고자료 다운로드 (이영미 교수님 강좌, 목요일&금요일)
+# C과정 참고자료  (이영미 교수님 강좌, 목요일&금요일)
 
 <details> <summary> 참고자료 보기 </summary>
 
-* **정리 중**
+| 파일명 | 링크 | 설명 |
+|--------|------|------|
+| C_class_PCA_example_mtcars.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_PCA_example_mtcars.md) | 목요일 오전 PCA 실습 연습(factoextra 포함) |
+| C_class_chapter1.r | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter1.r) | C 과정 챕터 1코드 |
+| C_class_chapter1__a_USA.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter1__a_USA.md) | USA 범죄 데이터 실습 |
+| C_class_chapter1__b_olympic.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter1__b_olympic.md) | 올림픽 데이터 실습 |
+| C_class_chapter1__c_Harman74.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter1__c_Harman74.md) | Harman데이터 이용 실습 1 |
+| C_class_chapter1__d_Harman74.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter1__d_Harman74.md) | Harman데이터 이용 실습 2 |
+| C_class_chapter1_ex.r | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter1_ex.r) | 챕터 1 연습문제 코드 |
+| C_class_chapter2.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2.md) | C 과정 챕터 2코드 |
+| C_class_chapter2__a_kmeans.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2__a_kmeans.md) | K-Means 클러스터링 실습 1 |
+| C_class_chapter2__b__kmeans.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2__b__kmeans.md) | CK-Means 클러스터링 실습 2 |
+| C_class_chapter2__c_basic.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2__c_basic.md) | 계층적 군집분석 실습|
+| C_class_chapter2__c_iris.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2__c_iris.md) | 계층적 군집분석 실습 2 |
+| C_class_chapter2__d_mclust.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2__d_mclust.md) | mclust 활용 실습 |
+| C_class_chapter2_ex.r | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2_ex.r) | 챕터 2 연습문제 코드 |
+| C_class_chapter2_ex__1.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_chapter2_ex__1.md) | 챕터 2 연습문제 1 코드 |
+| C_class_page4_Bivariate_Normal_Distribution.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_page4_Bivariate_Normal_Distribution.md) | C 과정 페이지 4 수식 기반 설명 |
+| C_class_prof_factoextra.r | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_prof_factoextra.r) | factoextra 사용법 - 교수 공유 |
+| C_class_projection_data.md | [바로가기](https://github.com/hanwo-ol/statistics_R_class07/blob/main/C_class_projection_data.md) | 정사영 시각화 코드 |
+
+
  
 </details>
 
