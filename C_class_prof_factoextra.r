@@ -1,4 +1,5 @@
-######## 교수님이 공유해주라고 하신 코드 #######
+######## 교수님이 공유해주라고 하신 코드 #######    
+
 library(factoextra)
 p1 <- fviz_nbclust(xdata, kmeans, 
                    method = "silhouette") + 
